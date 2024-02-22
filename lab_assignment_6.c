@@ -1,8 +1,26 @@
+//Alexander Disharoon
+//Lab Assignment 6
+
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
-	return -1;
+	if (high >= low) 
+	{
+        int searchIndex = low + (high - low) / 2;
+
+        if (numbers[searchIndex] == value) 
+		{
+			return searchIndex;
+		}
+        if (numbers[searchIndex] > value) {
+            return search(numbers, low, searchIndex - 1, value);
+        }
+        return search(numbers, searchIndex + 1, high, value);
+    }
+
+    return -1;
 }
 
 void printArray(int numbers[], int sz)
